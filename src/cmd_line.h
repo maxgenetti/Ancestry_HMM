@@ -41,7 +41,13 @@ public:
     
     /// bool sample is expressed as genotypes, not read counts
     bool genotype ;
-    
+
+    /// edit max - bool estimate recombination map
+    bool recombination_map ;
+
+    /// edit max - double estimated recombination rate
+    double starting_recombination ;
+
     /// ancestral genotype frequencies are fixed
     bool ancestral_fixed ;
     

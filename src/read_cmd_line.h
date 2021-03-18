@@ -55,6 +55,13 @@ void cmd_line::read_cmd_line ( int argc, char *argv[] ) {
     /// per site per read error rate
     error_rate = 0.01 ;
     
+    /// edit max - option to generate recombination map
+    recombination_map = false ;
+
+    /// edit max - recombination rate in cM/Mb
+    starting_recombination = 0 ;
+
+
     /// genotype data rather than read data?
     genotype = false ;
 
@@ -201,6 +208,17 @@ void cmd_line::read_cmd_line ( int argc, char *argv[] ) {
             ne = 2 * atof(argv[++i]) ;
         }
 
+        /// edit max - begin
+        ///adds option to generate recombination map
+        if ( strcmp(argv[i],"--rec") == 0 ) {
+            recombination_map = true ;
+        }
+        ///user inputed uniform recombination rate
+        if ( strcmp(argv[i],"--rate") == 0 ) {
+            starting_recombination = atof(argv[++i]) ;
+        }
+        /// edit max - end
+
         /// this version will allow inputting all samples in a single file with separate posterior output files
         if ( strcmp(argv[i],"-i") == 0 ) {
             input_file = string(argv[++i]) ;
@@ -217,6 +235,7 @@ void cmd_line::read_cmd_line ( int argc, char *argv[] ) {
         if ( strcmp(argv[i],"--fix") == 0 ) {
             ancestral_fixed = true ;
         }
+
     }
     
     if ( input_file == "null" ) {

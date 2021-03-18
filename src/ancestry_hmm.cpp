@@ -57,7 +57,7 @@ using namespace arma ;
 #include "read_input.h"
 #include "nelder_mead.h"
 #include "golden_search.h"
-#include "bootstrap.h" 
+#include "bootstrap.h"
 
 int main ( int argc, char *argv[] ) {
     
@@ -97,8 +97,9 @@ int main ( int argc, char *argv[] ) {
     vector<int> position ;
     vector<double> recombination_rate ;
     vector<string> chromosomes ;
-    read_file( options, markov_chain_information, state_list, position, recombination_rate, chromosomes ) ;
-        
+    double total_recombination ;
+    read_file( options, markov_chain_information, state_list, position, recombination_rate, total_recombination, chromosomes ) ; /// edit max - added variable total_recombination
+
     /// create basic transition information
     cerr << (double) (clock() - t) << " ms" << endl << "computing transition routes\t\t\t" ; t = clock() ;
     /// 3d map to look up by ploidy, start state, end state, and then relevant transition information
