@@ -79,7 +79,7 @@ void read_file ( cmd_line &options, vector<markov_chain> &markov_chain_informati
         /// this might be useful in place of LD pruning
         else {
 
-            total_recombination += ( new_line.recombination_rate ) ; ///edit max - seperate calculation for flat_rate
+            total_recombination += ( new_line.recombination_rate ) ; ///edit max - calculate total recombination
 
             extra_recombination += new_line.recombination_rate ;
             if ( extra_recombination < options.minimum_distance ) {
