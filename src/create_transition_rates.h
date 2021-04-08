@@ -12,7 +12,7 @@ void create_transition_matrix ( map<int,vector<mat> > &transition_matrix , vecto
     /// else, have to create entire matrix
     /// first create data object of approporate size
     transition_matrix[number_chromosomes].resize(recombination_rate.size()) ;
-    
+
     //// iterate across all positions and compute transition matrixes
     for ( int p = 1 ; p < recombination_rate.size() ; p ++ ) {
         
@@ -160,7 +160,6 @@ mat create_transition_rates ( vector<pulse> admixture_pulses, double n, vector<d
             }
         }
     }
-        
     return transition_rates.t() ;
 }
 

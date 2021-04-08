@@ -79,7 +79,7 @@ void read_file ( cmd_line &options, vector<markov_chain> &markov_chain_informati
         /// this might be useful in place of LD pruning
         else {
 
-            total_recombination += ( new_line.recombination_rate ) ; ///edit max - calculate total recombination
+            total_recombination += ( new_line.recombination_rate ) ; ///edit max - calculate total recombination of contig
 
             extra_recombination += new_line.recombination_rate ;
             if ( extra_recombination < options.minimum_distance ) {
@@ -141,17 +141,17 @@ void read_file ( cmd_line &options, vector<markov_chain> &markov_chain_informati
     }
     
     ///edit max - begin
-    ///calculate uniform recombination rate
+    ///calculate uniform recombination rate (need to add checks for chromsome transitions, check position vector to see if next site is smaller)
     if (options.recombination_map == true){
         int total_sites = recombination_rate.size() ;
     
         if (options.starting_recombination == 0){
-            double flat_rate = total_recombination/(position[total_sites-1]-position[0]);
-            recombination_rate.assign(total_sites, flat_rate) ;
+            double flat_rate = total_recombination/(position[total_sites-1]-position[0]); ///calculate mean recombination across chromosome
+            recombination_rate.assign(total_sites, flat_rate) ; ///assign uniform recombination rate to all sites
         }
         else {
-            recombination_rate.assign(total_sites, options.starting_recombination) ;
-            total_recombination = options.starting_recombination*(position[total_sites-1]-position[0]) ;
+            recombination_rate.assign(total_sites, options.starting_recombination) ;  ///assign uniform recombination rate to all sites
+            total_recombination = options.starting_recombination*(position[total_sites-1]-position[0]) ;  ///calculate recombination across chromosome
         }
     }
     ///edit max - end

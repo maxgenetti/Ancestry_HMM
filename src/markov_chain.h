@@ -27,6 +27,8 @@ public:
     /// forward probs
     vector<vec> alphas ;
     double compute_forward_probabilities( map<int, vector<mat> > &transition_matrix, vector<mat> &interploidy_transitions  ) ;
+    double compute_forward_probabilities_subset( map<int, vector<mat> > &transition_matrix, vector<mat> &interploidy_transitions, vector<vec> & emission_probabilities_subset ) ;
+
     
     /// backward probs
     vector<vec> betas ;
